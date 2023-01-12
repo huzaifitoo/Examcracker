@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:ignore="MissingClass">
 
-    <ImageView
-        android:id="@+id/uploadpdf"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:src="@drawable/ic_launcher_background" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/selectedPdf"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Upload A Pdf"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="16dp"
+        android:padding="20dp"
+        android:text="Click To Pick PDF From Storage"
+        android:textColor="#0798DA"
         android:textSize="22sp"
         android:textStyle="bold" />
+
+    <com.github.barteksc.pdfviewer.PDFView
+        android:id="@+id/pdf_view"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

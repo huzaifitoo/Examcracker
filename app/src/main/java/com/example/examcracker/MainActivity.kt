@@ -1,44 +1,45 @@
 package com.example.examcracker
 
-
-import android.app.Activity
-import android.app.Dialog
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.result.contract.ActivityResultContracts
 import com.example.examcracker.databinding.ActivityMainBinding
 
-
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityMainBinding
-    private var imageUrl : Uri? = null
 
-    private var launchGalleryActivity = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ){
-        if (it.resultCode== Activity.RESULT_OK){
-            imageUrl= it.data!!.data
+    private lateinit var binding: ActivityMainBinding
 
-            binding.uploadpdf.setImageURI(imageUrl)
-        }
-    }
-
-
+    private lateinit var pdfUri: Uri
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.apply {
-            uploadpdf.setOnClickListener {
 
-                val intent = Intent("android.intent.action.GET_CONTENT")
-                intent.type = "application/pdf"
-                launchGalleryActivity.launch(intent)
-            }
-
+        binding.selectedPdf.setOnClickListener {
+            openFile()
         }
-    }}
+    }
+
+    val PICK_PDF_FILE = 2
+
+    fun openFile() {
+        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
+            addCategory(Intent.CATEGORY_OPENABLE)
+            type = "application/pdf"
+        }
+
+        startActivityForResult(intent, PICK_PDF_FILE)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == PICK_PDF_FILE) {
+            pdfUri = data?.data!!
+        }
+        binding.pdfView.fromUri(pdfUri)
+
+    }
+
+}
