@@ -19,6 +19,9 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var progressDialog: ProgressDialog
 
+    private var email = ""
+    private var password = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -31,33 +34,29 @@ class LoginActivity : AppCompatActivity() {
 
         binding.noAccountClick.setOnClickListener {
 
-            startActivity(Intent(this,RegisterActivity::class.java))
+            startActivity(Intent(this, RegisterActivity::class.java))
 
         }
 
         binding.loginBtn.setOnClickListener {
-
-
             validateData()
         }
     }
 
-    private val email = ""
-    private val password = ""
+
 
     private fun validateData() {
 
-        binding.emailEt.text.toString().trim()
-        binding.passwordEt.text.toString().trim()
 
-      //  !Patterns.EMAIL_ADDRESS.matcher(email).matches()
-        if (email.isEmpty()){
+        email = binding.emailEt.text.toString().trim()
+         password = binding.passwordEt.text.toString().trim()
+
+        //  !Patterns.EMAIL_ADDRESS.matcher(email).matches()
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             Toast.makeText(this, "invalid email...", Toast.LENGTH_SHORT).show()
-        }
-        else if (password.isEmpty()){
+        } else if (password.isEmpty()) {
             Toast.makeText(this, "please enter password", Toast.LENGTH_SHORT).show()
-        }
-        else {
+        } else {
             loginUser()
         }
     }
@@ -67,7 +66,7 @@ class LoginActivity : AppCompatActivity() {
         progressDialog.setMessage("logging in ...")
         progressDialog.show()
 
-        firebaseAuth.signInWithEmailAndPassword(email,password)
+        firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnSuccessListener {
 
                 checkUser()
@@ -75,7 +74,8 @@ class LoginActivity : AppCompatActivity() {
             .addOnFailureListener {
                 progressDialog.dismiss()
                 Toast.makeText(this, "error logging in ", Toast.LENGTH_SHORT).show()
-            } }
+            }
+    }
 
     private fun checkUser() {
         progressDialog.setMessage("checking user...")
@@ -84,18 +84,22 @@ class LoginActivity : AppCompatActivity() {
 
         val ref = FirebaseDatabase.getInstance().getReference("Users")
         ref.child(firebaseUser!!.uid)
-            .addListenerForSingleValueEvent(object : ValueEventListener{
+            .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
 
                     progressDialog.dismiss()
                     val userType = snapshot.child("userType").value
 
-                    if (userType == "user"){
-                        startActivity(Intent(this@LoginActivity,DashboardUserActivity::class.java))
+                    if (userType == "user") {
+                        startActivity(Intent(this@LoginActivity, DashboardUserActivity::class.java))
                         finish()
-                    }
-                    else if(userType == "admin"){
-                        startActivity(Intent(this@LoginActivity,DashboardAdminActivity::class.java))
+                    } else if (userType == "admin") {
+                        startActivity(
+                            Intent(
+                                this@LoginActivity,
+                                DashboardAdminActivity::class.java
+                            )
+                        )
                         finish()
                     }
                 }
@@ -107,7 +111,5 @@ class LoginActivity : AppCompatActivity() {
             })
 
 
-
-
-}
+    }
 }

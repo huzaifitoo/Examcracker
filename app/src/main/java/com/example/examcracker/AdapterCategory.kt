@@ -30,7 +30,7 @@ class AdapterCategory : RecyclerView.Adapter<AdapterCategory.HolderCategory>,Fil
     inner class HolderCategory(itemView: View): RecyclerView.ViewHolder(itemView){
 
         var categoryTv : TextView = binding.categoryText
-        var deleteBtn : ImageButton  = binding.deleteBtn as ImageButton
+        var deleteBtn : ImageView = binding.deleteBtn
 
     }
 

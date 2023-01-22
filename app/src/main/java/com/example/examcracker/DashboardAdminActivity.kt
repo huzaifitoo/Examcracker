@@ -1,11 +1,14 @@
 package com.example.examcracker
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.core.widget.addTextChangedListener
+import android.util.Log
+import androidx.core.content.ContextCompat.startActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.examcracker.databinding.ActivityDashboardAdminBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -63,14 +66,21 @@ class DashboardAdminActivity : AppCompatActivity() {
         categoryArrayList = ArrayList()
         val ref = FirebaseDatabase.getInstance().getReference("Categories")
         ref.addValueEventListener(object : ValueEventListener{
+            @SuppressLint("SuspiciousIndentation")
             override fun onDataChange(snapshot: DataSnapshot) {
                 categoryArrayList.clear()
                 for (ds in snapshot.children){
                     val model = ds.getValue(ModelCategory:: class.java)
-                    categoryArrayList.add(model!!)
+                        model.let {
+                            categoryArrayList.add(it!!)
+                        }
+
                 }
+                Log.d("Data",categoryArrayList.toString())
                 adapterCategory = AdapterCategory(this@DashboardAdminActivity,categoryArrayList)
                 binding.categoriesRv.adapter = adapterCategory
+
+                binding.categoriesRv.layoutManager = LinearLayoutManager(this@DashboardAdminActivity,LinearLayoutManager.VERTICAL,false)
             }
 
             override fun onCancelled(error: DatabaseError) {

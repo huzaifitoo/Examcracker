@@ -55,7 +55,7 @@ class CategoryAddActivity : AppCompatActivity() {
         val timeStamp = System.currentTimeMillis()
 
         val hashMap = HashMap<String, Any>()
-        hashMap["id"] = timeStamp
+        hashMap["id"] = timeStamp.toString()
         hashMap["category"] = category
         hashMap["timeStamp"] = timeStamp
         hashMap["uid"] = "${firebaseAuth.uid}"

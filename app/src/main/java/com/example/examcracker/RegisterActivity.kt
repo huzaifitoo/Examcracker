@@ -46,7 +46,7 @@ class RegisterActivity : AppCompatActivity() {
 
         if (name.isEmpty()) {
             Toast.makeText(this, "please enter name...", Toast.LENGTH_SHORT).show()
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        } else if (email.isEmpty()) {
             Toast.makeText(this, "invalid email pattern...", Toast.LENGTH_SHORT).show()
         } else if (password.isEmpty()) {
             Toast.makeText(this, "please enter password", Toast.LENGTH_SHORT).show()
