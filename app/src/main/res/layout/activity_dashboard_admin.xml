@@ -19,8 +19,8 @@
 
         <ImageView
             android:id="@+id/logoutBtn"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:src="@drawable/baseline_logout_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -40,7 +40,7 @@
             android:layout_marginTop="10dp"
             android:text="Dashboard Admin"
             android:textColor="@color/white"
-            android:textSize="20sp"/>
+            android:textSize="18sp"/>
 
         <TextView
             android:id="@+id/subtitleTv"
@@ -52,7 +52,7 @@
             app:layout_constraintTop_toBottomOf="@+id/titleTv"
             android:text="abc@example.com"
             android:textColor="@color/white"
-            android:textSize="20sp"/>
+            android:textSize="16sp"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -65,7 +65,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/backLayout"
-        android:layout_marginHorizontal="10dp"
+        android:layout_marginHorizontal="5dp"
         android:hint="Search"
         android:layout_marginVertical="5dp"
         android:background="@color/white"
@@ -87,7 +87,7 @@
         android:layout_height="wrap_content"
         android:text="+ Add Category"
         android:layout_marginBottom="10dp"
-        android:layout_marginHorizontal="20dp"
+        android:layout_marginHorizontal="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="@color/purple_500"
@@ -101,6 +101,7 @@
         app:layout_constraintStart_toEndOf="@+id/addCategoryBtn"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
         android:src="@drawable/pdf"
         android:contentDescription="pdf"
         android:backgroundTint="@color/purple_500"/>

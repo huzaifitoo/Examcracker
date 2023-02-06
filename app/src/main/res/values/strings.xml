@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">ExamCracker</string>
     <string name="confirm_password">Confirm Password</string>
+    <string name="dd_mm_yyyy">DD/MM/YYYY</string>
+    <string name="category">category</string>
+    <string name="description_of_book">Description of book</string>
+    <string name="title_of_book">Title of book</string>
 </resources>

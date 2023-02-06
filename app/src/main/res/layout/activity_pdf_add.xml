@@ -36,6 +36,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/attachImg"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:tint="@color/white"
+        android:src="@drawable/attach_img"
+       app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,7 +69,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imgView1">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/bookTitle"
+            android:id="@+id/titleET"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginHorizontal="20dp"
@@ -78,7 +88,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tilBookTitle">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/BookDescrption"
+            android:id="@+id/descriptionET"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginHorizontal="20dp"
@@ -91,14 +101,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tilBookDesp"
-        android:id="@+id/categoryText"
+        android:id="@+id/categoryTV"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:padding="10dp"
+        android:drawableStart="@drawable/baseline_category_24"
         android:gravity="center_vertical"
         android:layout_marginHorizontal="30dp"
         android:hint=" Book Category "/>
-
 
 
     <Button
@@ -106,12 +116,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="10dp"
         android:background="@color/purple_500"
         android:text="Upload"
+        android:layout_marginTop="10dp"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/categoryText" />
+        app:layout_constraintTop_toBottomOf="@+id/categoryTV" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.examcracker"
-        minSdk 21
+        minSdk 26
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -42,13 +42,14 @@ android {
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.9.0'
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.6.0'
+    implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.google.firebase:firebase-auth-ktx:21.1.0'
     implementation 'com.google.firebase:firebase-database-ktx:20.1.0'
-    implementation 'com.google.firebase:firebase-crashlytics-ktx:18.3.2'
-    implementation 'androidx.wear.tiles:tiles-material:1.1.0-alpha04'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx:18.3.3'
+    implementation 'androidx.wear.tiles:tiles-material:1.1.0'
+    implementation 'com.google.firebase:firebase-storage-ktx:20.1.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
@@ -56,9 +57,9 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:31.1.1')
     implementation 'com.google.firebase:firebase-analytics-ktx'
 
-    implementation 'com.google.firebase:firebase-firestore:24.4.1'
+    implementation 'com.google.firebase:firebase-firestore:24.4.2'
     implementation 'com.google.firebase:firebase-storage:20.1.0'
-
+    implementation 'com.github.barteksc:android-pdf-viewer:3.2.0-beta.1'
     dependencies {
         //noinspection GradleCompatible
         implementation ('com.android.support:support-compat:25.3.1'){
